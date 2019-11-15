@@ -159,7 +159,7 @@ always @(posedge clock) begin
         case(i2c_state)
             STATE_IDLE: begin
                 if( start_condition ) begin
-                    next_ack    <= 1;
+                    next_ack    <= 0;
                     master_read <= 0;
                     begin_byte  <= 1;
                     i2c_state   <= STATE_DEVICE_ADDRESS;
