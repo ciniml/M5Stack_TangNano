@@ -17,7 +17,9 @@ module top (
     output wire led_b,
 
     inout wire sda,
-    inout wire scl 
+    inout wire scl,
+
+    output wire serial_out
 );
 
 logic [6:0] reg_address;
@@ -41,25 +43,29 @@ always @(posedge clock) begin
     if( !resetn ) begin
         led_out <= 0;
     end
-    else begin
-        reg_response <= 0;
-        if( reg_request && reg_is_write ) begin
-            reg_response <= 1;
-            case(reg_address)
-                8'h01: led_out <= reg_write_data[2:0];
-                default: reg_response <= 0;
-            endcase
-        end
-        else if( reg_request && !reg_is_write ) begin
-            reg_response <= 1;
-            case(reg_address)
-                8'h00: reg_read_data = 8'ha5;
-                8'h01: reg_read_data = {5'b0, led_out};
-                default: reg_response <= 0;
-            endcase
-        end
-    end
+    // else begin
+    //     reg_response <= 0;
+    //     if( reg_request && reg_is_write ) begin
+    //         reg_response <= 1;
+    //         case(reg_address)
+    //             8'h01: led_out <= reg_write_data[2:0];
+    //             default: reg_response <= 0;
+    //         endcase
+    //     end
+    //     else if( reg_request && !reg_is_write ) begin
+    //         reg_response <= 1;
+    //         case(reg_address)
+    //             8'h00: reg_read_data = 8'ha5;
+    //             8'h01: reg_read_data = {5'b0, led_out};
+    //             default: reg_response <= 0;
+    //         endcase
+    //     end
+    // end
 end
+
+ws2812b ws2812b_inst (
+    .*
+);
 
 endmodule
     

@@ -3,7 +3,7 @@
 //File Title: Physical Constraints file
 //GOWIN Version: V1.9.2.02Beta
 //Part Number: GW1N-LV1QN48C6/I5
-//Created Time: Fri 11 15 04:00:42 2019
+//Created Time: Mon 11 18 02:14:50 2019
 
 IO_LOC "clock" 35;
 IO_PORT "clock" IO_TYPE=LVCMOS33;
@@ -15,6 +15,8 @@ IO_LOC "led_g" 16;
 IO_PORT "led_g" IO_TYPE=LVCMOS33;
 IO_LOC "led_b" 17;
 IO_PORT "led_b" IO_TYPE=LVCMOS33;
+IO_LOC "serial_out" 43;
+IO_PORT "serial_out" IO_TYPE=LVCMOS33;
 IO_LOC "scl" 45;
 IO_PORT "scl" IO_TYPE=LVCMOS33;
 IO_LOC "sda" 44;
